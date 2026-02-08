@@ -1,0 +1,292 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 美国大学生数学建模竞赛（MCM/ICM）论文模板
+%%% 来源网站：www.latexstudio.net
+%%       2010 -- 2015 by Zhaoli Wang
+%%       2014 -- 2019 by Liam Huang
+%%       2019 -- 2026 by latexstudio.net
+%%% 中文注释：小嗷犬 blog.marquis.eu.org
+%%% 部分修改:StarChino (Feb2026)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% code: 代码文件夹
+%%% figures: 图片文件夹
+%%% *.cls: LaTeX 格式文件
+%%% *.tex: LaTeX 文档文件
+%%% *.bib: Bib 引用文献源文件
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 可能用到的网站
+%%% LaTeX公式编辑器：https://www.latexlive.com/
+%%% Diagram流程图绘制：https://www.drawio.com/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 模板参数设置
+\documentclass{mcmthesis}  % 文档类型
+\mcmsetup{CTeX = false,   % 使用 CTeX 套装时,设置为 true
+        tcn = 1111111,   % 队伍控制号(记得修改)
+        problem = ABCDEF,  % 选题(记得修改)
+        sheet = true,   % sheet页
+        titleinsheet = true,   % sheet页显示标题
+        keywordsinsheet = true,  % sheet页显示关键词
+        titlepage = false,   % 标题页(没见过要用)
+        abstract = true  % 摘要
+        }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 导入宏包和引用文献源
+\usepackage{palatino}  % 帕拉提诺体字体宏包
+\usepackage{lipsum}  % 导入生成段落的宏包
+\usepackage[hyperref=true,style=ieee]{biblatex}  % biblatex参考文献宏包
+\usepackage{makecell}%表格内换行
+\usepackage{longtable}%长表格
+\usepackage{setspace}
+\usepackage{eso-pic}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage[svgnames]{xcolor} % 提供丰富的颜色名称
+\addbibresource{ref.bib}  % 添加引用文献bib源
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 文档信息设置
+\title{Title}  % 文章标题(记得修改)
+\author{\small Team 1111111}  % 作者，开启标题页才会显示
+\date{\today}  % 日期，开启标题页才会显示
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ===============文档开始===============
+\begin{document}  % 文档
+\begin{abstract}  % 摘要
+\hspace{1em}This paper
+
+\textbf{For Task 1},
+
+\textbf{For Task 2}, 
+
+\textbf{For Task 3},
+
+\textbf{For Task 4},
+
+Ultimately,
+
+%%% ===============摘要正文结束===============
+\begin{keywords}  % 关键词(记得修改)
+keywords1,keywords2,keywords3
+\end{keywords}  % 结束关键词
+\end{abstract}  % 结束摘要
+\maketitle  % 生成sheet页
+\begin{spacing}{0.8}
+\tableofcontents  % 生成目录表  
+\end{spacing}
+
+\newpage  % 开始新的一页
+%%%================正文开始==================
+\section{Introduction}
+\subsection{Background}
+
+\iffalse%注释开始
+\fi%注释结束
+%为防止出错 部分示例已经注释
+%%%%%%%%注释掉的示例 使用时复制修改即可
+
+\begin{figure}[h]  % 图片
+\small
+\centering  % 居中
+\includegraphics[width=5cm]{example1.jpg}  % 引入图片源 支持jpg png pdf
+\caption{example} \label{fig:example}  % 标题与标签
+\end{figure}  % 图片结束
+
+%This is Figure \eqref{fig:example}.  % 引用图表
+
+This is a cite\cite{toksoz1974structure}.  % 引用文献
+
+\begin{equation}  % 公式，独占一行、居中，自动编号
+E = mc^2 \label{aa}  % 标签
+\end{equation}  % 公式结束
+
+\begin{equation}  % 公式，独占一行、居中
+\nonumber % 不编号
+E = mc^2
+\end{equation}  % 公式结束
+
+\[a^2+b^2=c^2
+\]%单行公式
+
+This is $a^2+b^2=c^2$%行内公式
+
+\begin{itemize}  % 无序列表
+\item This is a item.
+\item This is a item.
+\end{itemize}  % 无序列表结束
+
+\textit{I love math.}  % 斜体
+
+\textbf{I love math.}  % 粗体
+
+\underline{I love math.}  %下划线
+
+%%%%%%%%%%%%%%%%%%%%%%%% 并排图 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h]  % 图片
+\centering  % 居中
+\begin{minipage}[c]{0.48\textwidth}  % 子页
+\centering  % 居中
+\includegraphics[width=7cm]{example1.jpg}  % 引入图片源
+\caption{example} \label{fig:example}  % 标题与标签
+\end{minipage}  % 子页结束
+\hspace{0.02\textwidth}
+\begin{minipage}[c]{0.48\textwidth}  % 子页
+\centering  % 居中
+\includegraphics[width=7cm]{example2.jpg}  % 引入图片源
+\caption{example} \label{fig:example}  % 标题与标签
+\end{minipage}  % 子页结束
+\end{figure}  % 图片结束
+%%%%%%%%%%%%%%%%%%%%%% 并排图结束 %%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%% 三线表 %%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htb]  % 表格
+\caption{Caption}  % 标题
+\label{tab1}  % 标签
+\tabcolsep 42pt % 列间距
+\begin{tabular*}{\textwidth}{cccc}  % tabular*环境
+\toprule  % 顶线
+Title a & Title b & Title c & Title d \\
+\midrule  % 中线
+Aaa & Bbb & Ccc & Ddd \\
+Aaa & Bbb & Ccc & Ddd \\
+Aaa & Bbb & Ccc & Ddd \\
+\bottomrule  % 底线
+\end{tabular*}  % tabular*环境结束
+\end{table}  % 表格结束
+%%%%%%%%%%%%%%%%%%%%%% 三线表结束 %%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%% 长表格(可换页) %%%%%%%%%%%%%%%%
+\begin{longtable}{ccc}
+\caption{Table2}\\%标题
+\hline
+    \makecell{UP\\DOWN}&1111&2222\\%表格内换行
+\hline
+    11&22&33\\
+    11&22&33\\
+    11&22&33\\
+\hline
+\end{longtable}
+%%%%%%%%%%%%%%%%%%%%%%%% 长表格结束 %%%%%%%%%%%%%%%%
+
+
+\subsection{Restatement of the problem}
+
+\subsection{Literature review}
+
+\subsection{Our work}
+
+\section{Assumption and Justification}
+\subsection{Assumption}
+\begin{itemize}
+\item \textbf{1.Assumption1}\\
+Your assumption.\\
+\item\textbf{2.Assumption2}\\
+Your assumption.\\
+\item\textbf{3.Assumption3}\\
+Your assumption.\\
+\end{itemize}
+\subsection{Nomenclature}
+
+\section{Task1}
+
+\section{Task2}
+
+\section{Task3}
+
+\section{Task4}
+
+\section{Sensitivity analysis of the model}
+
+\section{Evaluation and Extension}
+
+
+%%%%%%%%%%%%%%%%%%%%%%% 参考文献 %%%%%%%%%%%%%%%%%%%%%%%
+\newpage%页数紧张时不建议参考文献单开一页 建议注释掉
+\addcontentsline{toc}{section}{References}%将引用文献显示在目录页
+\printbibliography  % 打印引用文献列表
+%%%%%%%%%%%%%%%%%%%%%%% Memo/建议书 %%%%%%%%%%%%%%%%%%%%%%%
+%建议灵活设置 也可以直接导入有字的图片作为背景
+\newpage
+\thispagestyle{empty}
+% --- 1. 背景图片设置 ---
+\AddToShipoutPicture*{
+    \AtPageLowerLeft{%
+        \includegraphics[width=\paperwidth,height=\paperheight]{background.jpg}}}
+% --- 2. 写入目录 ---
+\phantomsection
+\addcontentsline{toc}{section}{Memo}%这里修改目录页Memo名称
+\vspace*{-2cm} 
+% --- 3. 透明衬底设置 ---
+\begin{center}
+\begin{tcolorbox}[
+    colback=white, 
+    opacityback=0.85, 
+    colframe=white, 
+    % --- 让框向左右页边距延伸 ---
+    width=\textwidth,
+    grow to left by=1.5cm,   % 向左边距伸进
+    grow to right by=1.5cm,  % 向右边距伸进
+    % ------------------------------------
+    arc=0pt, %圆角尺寸
+    boxrule=0pt, %边框
+    standard jigsaw,
+    % ---文字离白框边缘的距离---
+    left=25pt, 
+    right=25pt, 
+    top=20pt, 
+    bottom=20pt
+]
+    % --- 标题部分：大尺寸、斜体 (itshape)、不加粗 ---
+    {\fontsize{26pt}{30pt}\rmfamily\itshape  Title\\ }
+    % --- 称呼部分 ---（不用可以注释掉）
+    \vspace{3ex} % 标题与称呼之间的间距
+    {\large \rmfamily \noindent Dear Members of the MCM Office,\\}
+    \vspace{2ex}
+    \hrule height 0.5pt % 极细线，低调优雅
+    \vspace{4ex}
+    % --- 正文部分 ---
+    \rmfamily \large % 加大字号
+    \setlength{\parskip}{1.2em} % 段落间距
+    \setlength{\parindent}{0pt} % 缩进
+Your idea.
+
+    
+    \vfill % 自动填满剩余空间，让落款沉到底部
+    \noindent
+    Sincerely yours, \\
+    \textbf{Team \showtcn}
+
+\end{tcolorbox}
+\end{center}
+\lastmainpage%终止页码计数
+\clearpage
+\pagestyle{fancy}
+%%%%%%%%%%%%%%%%%%%%%%AI工具部分%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\pagestyle{empty}
+\section*{\begin{center}Report on Use of AI Tools\end{center}}
+\newcounter{ain}
+\newcounter{queryn}
+\newcounter{outputn}
+\newcommand{\aiss}[2]{
+        \stepcounter{ain}
+        \setcounter{queryn}{0}
+        \setcounter{outputn}{0}
+        \subsection*{\theain. #1(#2)}
+}
+\newcommand{\queryss}{
+        \stepcounter{queryn}
+        Query\thequeryn :\hspace{1em} 
+}
+\newcommand{\optss}{
+        \stepcounter{outputn}
+        Output\theoutputn :\hspace{1em} 
+}
+%==========开始正文 ============
+%命令可以帮助自动计数 也可以选择自行书写 不会影响页码自动计算
+\aiss{ChatGPT}{ChantGPT5.2-version20260130}%AI和版本
+\queryss Your qusetion\\%问题(不要删除换行符号)
+\optss AI's idea\\%回答
+\queryss Your qusetion\\%问题
+\optss AI's idea\\%回答
+\aiss{Google Gemini}{Gemini3.0-Flash}%AI和版本
+\queryss Your qusetion\\%问题
+\optss AI's idea\\%回答
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}  % 文档结束
